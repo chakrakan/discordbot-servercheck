@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 const Footer = ({ authorLink, githubLink }) => (
   <footer
     style={{
-      marginTop: `1.45rem`,
+      marginTop: `3rem`,
     }}
   >
     ©{" "}

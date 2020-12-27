@@ -5,11 +5,10 @@ import Form from "./form"
 
 const Content = () => {
   const [token, setToken] = useState("")
-  const [serverData, setServerData] = useState([])
+  const [botServers, setBotServers] = useState([])
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(`Submitting ${token}`)
     if (token !== "") {
       fetch("https://discordapp.com/api/users/@me/guilds", {
         method: "get",
@@ -19,35 +18,41 @@ const Content = () => {
         },
       })
         .then(resp => resp.json())
-        .then(data => setServerData(data))
+        .then(data => setBotServers(data))
         .catch(err => console.log(err))
     }
-    console.log(serverData)
   }
 
   return (
     <ContentWrapper>
       <h1>Discord Server Checker</h1>
-      <h4>Check your own, or your bot's server involvements!</h4>
+      <h4>Check your bot's server involvements!</h4>
       <br />
       <Form onSubmit={handleSubmit} setToken={setToken} />
       <br />
-      <CardWrapper>
+      {botServers.length ? (
+        <h4>Your bot is being used in {botServers.length} servers!</h4>
+      ) : (
+        <></>
+      )}
+      <br />
+      <CardContainer>
         <Fragment>
-          {serverData.length > 0 ? (
-            serverData.map((server, i) => (
+          {botServers.length > 0 ? (
+            botServers.map((server, i) => (
               <Card
                 key={i}
                 id={server.id}
                 name={server.name}
                 permissions={server.permissions}
+                icon={server.icon}
               />
             ))
           ) : (
             <></>
           )}
         </Fragment>
-      </CardWrapper>
+      </CardContainer>
     </ContentWrapper>
   )
 }
@@ -59,11 +64,12 @@ const animation = keyframes`
 const ContentWrapper = styled.div`
   max-width: 1234px;
 `
-const CardWrapper = styled.div`
-  max-width: 800px;
+const CardContainer = styled.div`
+  max-width: 840px;
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 30px;
-  grid-auto-rows: max-content;
+
   > * {
     opacity: 0;
     animation: ${animation} 1s forwards;
@@ -71,6 +77,11 @@ const CardWrapper = styled.div`
     :nth-child() {
       animation-delay: 0.5s;
     }
+  }
+
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 `
 
