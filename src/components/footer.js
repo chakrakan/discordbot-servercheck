@@ -26,7 +26,7 @@ Footer.propTypes = {
 
 Footer.defaultProps = {
   authorLink: `https://github.com/chakrakan`,
-  githubLink: `https://github.com/chakrakan/server-checker`,
+  githubLink: `https://github.com/chakrakan/discordbot-servercheck`,
 }
 
 export default Footer
