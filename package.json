@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Kanisk Chakraborty <dev.kanisk@gmail.com>",
   "dependencies": {
-    "gatsby": "3.8.0",
+    "gatsby": "3.8.1",
     "gatsby-image": "3.8.0",
     "gatsby-plugin-manifest": "3.8.0",
     "gatsby-plugin-offline": "4.8.0",
