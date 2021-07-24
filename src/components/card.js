@@ -35,7 +35,6 @@ const Card = ({ id, name, permissions, icon, token }) => {
             }
         }
     );
-    window.location.reload();
   }
 
   return (
