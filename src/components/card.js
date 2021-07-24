@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
+import axios from "axios";
 
-const Card = ({ id, name, permissions, icon }) => {
+const Card = ({ id, name, permissions, icon, token }) => {
   // const [approxMembers, setApproxMembers] = useState(0)
   const iconBaseURL = icon
     ? `https://cdn.discordapp.com/icons/${id}/${icon}.webp`
@@ -25,6 +26,18 @@ const Card = ({ id, name, permissions, icon }) => {
   //   setTimeout(fetchInfo, 1500 * index)
   // })
 
+
+  const leaveServer = async (e) => {
+    const resp = await axios.delete(`https://discordapp.com/api/users/@me/guilds/${id}`, 
+        {
+            headers : {
+                Authorization : "Bot " + token
+            }
+        }
+    );
+    window.location.reload();
+  }
+
   return (
     <CardWrapper>
       <CardImg src={iconBaseURL} alt={name} />
@@ -32,6 +45,7 @@ const Card = ({ id, name, permissions, icon }) => {
         <h3>{name}</h3>
         <p>ID: {id}</p>
         <p>Permissions: {permissions}</p>
+        <button onClick = {leaveServer}> Leave Server </button>
         {/* <p>Approx. Members: {approxMembers}</p> */}
       </TextWrapper>
     </CardWrapper>
