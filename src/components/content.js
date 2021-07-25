@@ -14,7 +14,7 @@ const Content = () => {
         method: "get",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bot " + token,
+          "Authorization" : "Bot " + token,
         },
       })
         .then(resp => resp.json())
@@ -46,6 +46,7 @@ const Content = () => {
                 name={server.name}
                 permissions={server.permissions}
                 icon={server.icon}
+                token={token}
               />
             ))
           ) : (
