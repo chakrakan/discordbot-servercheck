@@ -44,13 +44,35 @@ const Card = ({ id, name, permissions, icon, token }) => {
         <h3>{name}</h3>
         <p>ID: {id}</p>
         <p>Permissions: {permissions}</p>
-        <button onClick = {leaveServer}> Leave Server </button>
+        <StyledButton onClick = {leaveServer}>Leave Server</StyledButton>
         {/* <p>Approx. Members: {approxMembers}</p> */}
       </TextWrapper>
     </CardWrapper>
   )
   // return <CardImg src={bannerURL} alt={name} />
 }
+
+const StyledButton = styled.button`
+background: rgba(250,90,90,1);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(250,90,90,1)), to(rgba(232,81,81,1)));
+	background: -webkit-linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+	background: -moz-linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+	background: -o-linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+	background: linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa5a5a', endColorstr='#e85151', GradientType=0 );
+  text-decoration: none;
+  color: white;
+  padding: 10px 30px;
+  display: inline-block;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.21);
+  border-bottom: 4px solid rgba(0,0,0,0.21);
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+  padding: 4px 12px;
+  margin: 5px;
+  font-size: 14px;
+`
 
 const CardImg = styled.img`
   margin-left: 20px;
