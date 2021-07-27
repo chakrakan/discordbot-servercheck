@@ -6,7 +6,7 @@
   "author": "Kanisk Chakraborty <dev.kanisk@gmail.com>",
   "dependencies": {
     "axios": "0.21.1",
-    "gatsby": "3.10.1",
+    "gatsby": "3.10.2",
     "gatsby-image": "3.10.0",
     "gatsby-plugin-manifest": "3.10.0",
     "gatsby-plugin-offline": "4.10.0",
