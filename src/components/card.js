@@ -1,34 +1,18 @@
 import React from "react"
 import styled from "styled-components"
 import axios from "axios";
+import globalCache from "../cache";
 
-const Card = ({ id, name, permissions, icon, token }) => {
+const Card = ({ id, name, permissions, icon }) => {
   // const [approxMembers, setApproxMembers] = useState(0)
   const iconBaseURL = icon
     ? `https://cdn.discordapp.com/icons/${id}/${icon}.webp`
     : "https://cdn.discordapp.com/embed/avatars/0.png"
 
-  // const fetchInfo = () =>
-  //   fetch(`https://discordapp.com/api/guilds/${id}?with_counts=true`, {
-  //     method: "get",
-  //     mode: "no-cors",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Access-Control-Allow-Origin": "*",
-  //       Authorization: "Bot " + token,
-  //     },
-  //   })
-  //     .then(resp => resp.json())
-  //     .then(data => setApproxMembers(data.approximate_member_count))
-  //     .catch(err => console.log(err))
 
-  // useEffect(() => {
-  //   setTimeout(fetchInfo, 1500 * index)
-  // })
-
-
-  const leaveServer = async (e) => {
-    const resp = await axios.delete(`https://discordapp.com/api/users/@me/guilds/${id}`, 
+  const leaveServer = async () => {
+    const token = globalCache.get("token");
+    await axios.delete(`https://discordapp.com/api/users/@me/guilds/${id}`, 
         {
             headers : {
                 Authorization : "Bot " + token

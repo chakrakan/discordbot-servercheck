@@ -2,25 +2,31 @@ import React, { useState, Fragment } from "react"
 import styled, { keyframes } from "styled-components"
 import Card from "./card"
 import Form from "./form"
+import globalCache from "../cache";
+
 
 const Content = () => {
-  const [token, setToken] = useState("")
+  //const [token, setToken] = useState("")
   const [botServers, setBotServers] = useState([])
 
   const handleSubmit = e => {
-    e.preventDefault()
-    if (token !== "") {
+    e.preventDefault();
+    if (globalCache.get("token") !== "") {
       fetch("https://discordapp.com/api/users/@me/guilds", {
         method: "get",
         headers: {
           "Content-Type": "application/json",
-          "Authorization" : "Bot " + token,
+          "Authorization" : "Bot " + globalCache.get("token"),
         },
       })
         .then(resp => resp.json())
         .then(data => setBotServers(data))
         .catch(err => console.log(err))
     }
+  }
+
+  const setToken = (event) => {
+    globalCache.set("token", event);
   }
 
   return (
@@ -46,7 +52,6 @@ const Content = () => {
                 name={server.name}
                 permissions={server.permissions}
                 icon={server.icon}
-                token={token}
               />
             ))
           ) : (
@@ -86,4 +91,4 @@ const CardContainer = styled.div`
   }
 `
 
-export default Content
+export default Content;
