@@ -1,13 +1,12 @@
-import React, { useState, Fragment } from "react"
-import styled, { keyframes } from "styled-components"
-import Card from "./card"
-import Form from "./form"
+import React, { useState, Fragment } from "react";
+import styled, { keyframes } from "styled-components";
+import Card from "./card";
+import Form from "./form";
 import globalCache from "../cache";
-
 
 const Content = () => {
   //const [token, setToken] = useState("")
-  const [botServers, setBotServers] = useState([])
+  const [botServers, setBotServers] = useState([]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -16,18 +15,18 @@ const Content = () => {
         method: "get",
         headers: {
           "Content-Type": "application/json",
-          "Authorization" : "Bot " + globalCache.get("token"),
+          Authorization: "Bot " + globalCache.get("token"),
         },
       })
         .then(resp => resp.json())
         .then(data => setBotServers(data))
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
     }
-  }
+  };
 
-  const setToken = (event) => {
+  const setToken = event => {
     globalCache.set("token", event);
-  }
+  };
 
   return (
     <ContentWrapper>
@@ -60,16 +59,16 @@ const Content = () => {
         </Fragment>
       </CardContainer>
     </ContentWrapper>
-  )
-}
+  );
+};
 
 const animation = keyframes`
  from { opacity: 0; transform: translateY(-10px); filter: blur(10px); }
  to  { opacity: 1; transform: translateY(0px); filter: blur(0px); }
-`
+`;
 const ContentWrapper = styled.div`
   max-width: 1234px;
-`
+`;
 const CardContainer = styled.div`
   max-width: 840px;
   display: grid;
@@ -89,6 +88,6 @@ const CardContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr;
   }
-`
+`;
 
 export default Content;
