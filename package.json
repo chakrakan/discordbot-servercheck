@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Kanisk Chakraborty <dev.kanisk@gmail.com>",
   "dependencies": {
-    "axios": "0.21.4",
+    "axios": "0.22.0",
     "gatsby": "3.14.1",
     "gatsby-image": "3.11.0",
     "gatsby-plugin-manifest": "3.14.0",
