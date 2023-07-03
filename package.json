@@ -21,7 +21,7 @@
     "react-dom": "18.0.0",
     "react-helmet": "6.1.0",
     "react-infinite-scroller": "1.2.6",
-    "styled-components": "5.3.5"
+    "styled-components": "6.0.2"
   },
   "devDependencies": {
     "prettier": "2.6.2"
